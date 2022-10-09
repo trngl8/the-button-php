@@ -4,7 +4,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 
-$message = $_POST['message'];
+if (array_key_exists('message', $_POST)) {
+    $message = $_POST['message'];
+}
 
 header('Content-Type: application/json');
 
