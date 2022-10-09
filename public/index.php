@@ -9,7 +9,6 @@ $request = Request::createFromGlobals();
 
 $map = [
     '/hello' => 'hello',
-    '/bye'   => 'bye',
 ];
 
 $path = $request->getPathInfo();
@@ -22,6 +21,10 @@ if (isset($map[$path])) {
         "weight" => 32
     ];
 
+    if (array_key_exists('message', $_POST)) {
+      $data['message'] = $_POST['message'];
+    }
+    
     $response = new JsonResponse($data);
 } else {
     $response = new JsonResponse('Not Found', 404);
