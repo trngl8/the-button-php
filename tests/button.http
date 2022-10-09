@@ -1,0 +1,23 @@
+### json example
+
+POST http://localhost:8000/api/item
+Content-Type: application/json
+
+{
+  "message": "yo"
+}
+
+##### Response{
+#  "id": 1,
+#  "timestamp": "2015-03-01T20:00:00.000Z",
+#  "weight": 32
+#}
+
+### form example
+POST http://localhost:8000/api/item
+Content-Type: application/x-www-form-urlencoded
+
+message=yo
+
+### get example:
+GET http://localhost:8000/api
