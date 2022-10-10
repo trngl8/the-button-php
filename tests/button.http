@@ -4,7 +4,8 @@ POST http://localhost:8000/api/item
 Content-Type: application/json
 
 {
-  "message": "yo"
+  "message": "yo",
+  "something": "apple"
 }
 
 ##### Response{
@@ -17,7 +18,7 @@ Content-Type: application/json
 POST http://localhost:8000/api/item
 Content-Type: application/x-www-form-urlencoded
 
-message=yo
+message=yo&something=apple
 
 ### get example:
 GET http://localhost:8000/api
