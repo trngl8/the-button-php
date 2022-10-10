@@ -1,6 +1,6 @@
 ### json example
 
-POST http://localhost:8000/api/item
+POST http://localhost:8000/api/hello
 Content-Type: application/json
 
 {
@@ -14,10 +14,10 @@ Content-Type: application/json
 #}
 
 ### form example
-POST http://localhost:8000/api/item
+POST http://localhost:8000/api/hello
 Content-Type: application/x-www-form-urlencoded
 
 message=yo
 
 ### get example:
-GET http://localhost:8000/api
+GET http://localhost:8000/api/hello
