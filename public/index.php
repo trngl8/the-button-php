@@ -8,23 +8,29 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 $request = Request::createFromGlobals();
 
 $map = [
-    '/hello' => 'hello',
+    '/api/hello' => 'hello',
 ];
 
 $path = $request->getPathInfo();
 
 if (isset($map[$path])) {
+
+    $body = $request->request->all();
+
+    if($request->getContentType() === 'json') {
+        $body = json_decode($request->getContent(), true);
+    }
+
     $data = [
         "id" => 1,
         "timestamp" => time(),
         "uri" => $path,
-        "weight" => 32
+        "weight" => 32,
+        "request" => []
     ];
 
-    if (array_key_exists('message', $_POST)) {
-      $data['message'] = $_POST['message'];
-    }
-    
+    $data = array_merge($data, $body);
+
     $response = new JsonResponse($data);
 } else {
     $response = new JsonResponse('Not Found', 404);
