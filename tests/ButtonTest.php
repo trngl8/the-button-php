@@ -5,7 +5,7 @@ namespace App\Tests;
 use App\Model\Button;
 use PHPUnit\Framework\TestCase;
 
-class FunctionsTest extends TestCase
+class ButtonTest extends TestCase
 {
     public function setUp(): void
     {
