@@ -2,7 +2,7 @@
     "minimum-stability": "stable",
     "require": {
         "phpunit/phpunit": "^9.5",
-        "symfony/http-foundation": "^6.1"
+        "symfony/http-foundation": "^5.4"
     },
     "autoload": {
         "psr-4": {"App\\": "src/"}
