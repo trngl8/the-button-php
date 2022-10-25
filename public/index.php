@@ -2,17 +2,37 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$uri = $_SERVER['REQUEST_URI'];
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-$message = $_POST['message'];
+use App\Core\Router;
 
-header('Content-Type: application/json');
+$request = Request::createFromGlobals();
 
-$data = [
-    "id" => 1,
-    "timestamp" => time(),
-    "uri" => $uri,
-    "weight" => 32
-];
+$path = $request->getPathInfo();
 
-echo json_encode($data);
+$router = new Router($request);
+
+$router->get('/', function(Request $request, Response $response) {
+    $response->setContent('Hello World');
+    return $response;
+});
+
+$router->get('/api', function(Request $request, Response $response) {
+
+    $body = $request->request->all();
+    $data = [
+        "id" => 1,
+        "timestamp" => time(),
+        "uri" => '/api',
+        "weight" => 32,
+        "request" => []
+    ];
+
+    $response->setContent(json_encode(array_merge($body, $data)));
+    $response->headers->set('Content-Type', 'application/json');
+
+    return $response;
+});
+
+$router->run();
